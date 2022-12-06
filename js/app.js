@@ -1,0 +1,289 @@
+
+// Expresiones regulares
+const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+// REGISTRO DE USUARIO
+let botonEnviar = document.getElementById('botonEnviar')
+let nombre = []
+let email = []
+let contrasena = []
+
+function checklong(texto) {
+  return texto.length > 3 && texto.length < 15
+}
+
+function nuevoUsuario() {
+
+  let nuevoNombre = document.getElementById('nombre').value
+  let nuevoEmail = document.getElementById('email').value
+  let nuevaContrasena = document.getElementById('contrasena').value
+
+  console.log('xd', nuevoNombre)
+  console.log(nuevoEmail)
+  console.log(nuevaContrasena)
+
+  if (nuevoEmail.match(emailRegex) && checklong(nuevoNombre) && checklong(nuevaContrasena)) {
+    console.log('email correcto')
+    nombre = nombre.concat(nuevoNombre)
+    email = email.concat(nuevoEmail)
+    contrasena = contrasena.concat(nuevaContrasena)
+    localStorage.setItem('nombreUsuario', nombre)
+    localStorage.setItem('emailUsuario', email)
+    localStorage.setItem('contrasenaUsuario', contrasena)
+
+  } else {
+    // poner sweet alert
+
+  }
+
+  nombre = nombre.concat(nuevoNombre)
+  email = email.concat(nuevoEmail)
+  contrasena = contrasena.concat(nuevaContrasena)
+
+
+  // console.log(nombre)
+  // console.log(email)
+  // console.log(contrasena)
+
+  // guardar registro en localStoreage
+  localStorage.setItem('nombreUsuario', nombre)
+  localStorage.setItem('emailUsuario', email)
+  localStorage.setItem('contrasenaUsuario', contrasena)
+}
+
+
+// Modal carrito
+// const modalCarrito = () => {
+//   const modalBody = document.querySelector('.modal .modal-body')
+
+
+//   modalBody.innerHTML=''
+//   carrito.forEach((producto) => {
+//     const { id, nombre, precio, descripcion, cantidad, img } = producto
+//     modalBody.innerHTML += `
+//     <div class="modalContenedor">
+//       <div>
+//       <img class="img-fluid imgCarrito" src="${img}"/>
+//       </div>
+//       <div>
+//       <p>Producto: ${nombre}</p>
+//     <p>Precio: ${precio}</p>
+//     <p>Cantidad :${cantidad}</p>
+//     <button class="btn btn-danger"  onclick="eliminarProducto(${id})">Eliminar producto</button>
+//       </div>
+//     </div>
+//     `;
+//   })
+//   guardarModal()
+// }
+
+// function eliminarProducto (id){
+//   const idProd=id 
+//   carrito = carrito.filter((prod)=> prod.id !== idProd)
+//   modalCarrito()
+// }
+
+// function guardarModal(){
+//   localStorage.setItem('guardarCarrito', JSON.stringify(carrito))
+// }
+
+
+
+
+
+
+
+
+// const imgProd = document.querySelector('.imgProd')
+// const nombreProd = document.querySelector('.nombreProd')
+// const cantidadProd = document.querySelector('.cantidadProd')
+// const precioProd = document.querySelector('.precioProd')
+
+
+
+// PRODUCTOS
+// function productos(img, nombre, descripcion, precio, cantidad, id) {
+//   this.img = img;
+//   this.nombre = nombre
+//   this.descripcion = descripcion
+//   this.precio = precio
+//   this.cantidad = cantidad
+//   this.id = id
+// }
+
+// const producto1 = new productos(
+//   '../assets/img/livingcomedor/accesoriouno.jpg', 'Manopla', `Protege tus manos del calor mientras cocina con nuestro Set de Manopla. Se encuentra diseñado con un suave forro acolchado para su uso cómodo.`, 4500, 0, 1)
+// const producto2 = new productos(
+//   '../assets/img/livingcomedor/accesoriodos.jpg', 'Almohada', `Esta almohada es ideal para el apoyo de las diferentes zonas de la cabeza, hombres y cuello. Ofrece un soporte perfecto para todas las personas sin importar la posición en la que duermas.`, 4600, 0, 2)
+// const producto3 = new productos(
+//   '../assets/img/livingcomedor/manteluno.jpg', 'Mantel espampado', `Mantel rectangular estampado, compuesto por 100% poliéster. Estilo y diseño en tu mesa.`, 5200, 0, 3)
+// const producto4 = new productos(
+//   '../assets/img/livingcomedor/manteldos.jpg', 'Mantel liso', `Mantel rectangular liso, compuesto por puro algodón tusor. Estilo y diseño en tu mesa.`, 5500, 0, 4)
+// const producto5 = new productos(
+//   '../assets/img/livingcomedor/cortinauno.jpg', 'Cortina verde', `El black out textil es un tejido compuesto por 3 capas entrelazadas: una primera capa de tejido color, una capa de tejido negro en el medio y otra capa de tejido color en el reverso.`, 9500, 0, 5)
+// const producto6 = new productos(
+//   '../assets/img/livingcomedor/cortinados.jpg', 'Cortina roja', `El black out textil es un tejido compuesto por 3 capas entrelazadas: una primera capa de tejido color, una capa de tejido negro en el medio y otra capa de tejido color en el reverso.`, 10500, 0, 6)
+
+// let listaProductos = [
+//   producto1,
+//   producto2,
+//   producto3,
+//   producto4,
+//   producto5,
+//   producto6,
+// ]
+
+// function getProductos(){
+//   const API_URL = "http://localhost:3000/productosLivingComedor"
+//   return fetch(API_URL).then(response => response.json())        
+// }
+
+// // HTML
+// let productosStore=[]
+// async function monstrarProductos() {
+//   await getProductos().then(productos => {productosStore = productos});
+//   console.log(productosStore);
+//   productosStore.forEach(producto => {
+//     const artiulos = `<div
+//         class="card col-6 col-lg-12 rounded-start"
+//         style="width: 30rem"
+//         data-aos="fade-up"
+//         data-aos-duration="1000"
+//       >
+//         <img
+//           src="${producto.img}"
+//           class="card-img-top"
+//           alt="accesorio"
+//         />
+//         <div class="card-body">
+//           <h5 class="card-title">Descripción</h5>
+//           <h2>${producto.nombre}</h2>
+//           <p class="card-text">${producto.descripcion}</p>
+//           </p>
+//         </div>
+//         <ul class="list-group list-group-flush">
+//           <li class="list-group-item">$${producto.precio}</li>
+//           <li class="list-group-item">
+//             <label for="number" class="livCant">Cantidad:</label>
+//             <input type="number" name="number" id="${producto.id}"/>
+//           </li>
+//           <li class="list-group-item">
+//             <label for="submit"></label>
+//             <input type="submit" value="Agregar" class="livAgregar" onclick="agregarAlCarrito(${producto.id})" />
+//           </li>
+//         </ul>
+//       </div>`
+//     if (document.getElementById('sectionLiv')) {
+//       document.getElementById('sectionLiv').innerHTML += artiulos
+//     }
+//   })
+// }
+
+
+// // GUARDAR PRODUCTOS EN LOCALSTORAGE
+// let carrito = []
+
+// function agregarAlCarrito(id) {
+
+//   let producto = productosStore.find(producto => producto.id === id)
+//   let cantidadProductoSeleccionado = document.getElementById(producto.id).value
+//   producto.cantidad = cantidadProductoSeleccionado;
+
+//   carrito=[...carrito, producto]
+//   console.log(carrito)
+
+//   localStorage.setItem('carrito', JSON.stringify(carrito))
+
+// }
+
+
+// const localStorageCarrito = localStorage.getItem('carrito')
+// const carritoParseado = JSON.parse(localStorageCarrito);
+
+
+
+// // MOSTRAR EN HTML
+// monstrarProductos();
+
+// GUARDAR PRODUCTOS EN CARRITO
+
+// function mostrarCarrito(producto) {
+//   let contenedorCarrito = document.getElementById("contenedorCarrito")
+//   const div = document.createElement("div")
+//   contenedorCarrito.appendChild(div)
+
+//   contenedorCarrito.innerHTML =
+//     `<div class="card mb-4">
+//         <div class="card-body p-4 carritoFlex ">
+//           <div class="row align-items-center">
+//             <div class="col-md-2">
+//               <img
+//                 src="${producto.img}"
+//                 class="img-fluid imgProd"
+//                 alt="Generic placeholder image"
+//               />
+//             </div>
+//             <div class="col-md-2 d-flex justify-content-center">
+//               <div>
+//                 <p class="small text-muted mb-4 pb-2">Nombre</p>
+//                 <p class="lead fw-normal mb-0 nombreProd">${producto.nombre}</p>
+//               </div>
+//             </div>
+//             </div>
+//             <div class="col-md-2 d-flex justify-content-center">
+//               <div>
+//                 <p class="small text-muted mb-4 pb-2">Cantidad</p>
+//                 <p class="lead fw-normal mb-0 cantidadProd">${producto.cantidad}</p>
+//               </div>
+//             </div>
+//             <div class="col-md-2 d-flex justify-content-center">
+//               <div>
+//                 <p class="small text-muted mb-4 pb-2">Precio</p>
+//                 <p class="lead fw-normal mb-0 precioProd">${producto.precio}</p>
+//               </div>
+//             </div> `
+// }
+
+// function mostrarProductosCarrito() {
+//   console.log(carritoParseado);
+//   carritoParseado.forEach(producto => {
+//     console.log('prod carrito', producto)
+//     mostrarCarrito(producto);
+//   })
+// }
+
+// mostrarProductosCarrito()
+
+
+// const botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+
+// botonFinalizarCompra.addEventListener("click", () => {
+//   Swal.fire(
+//     'Gracias por su compra!',
+//     'Vuela pronto!',
+//     'success'
+//   )
+// })
+
+// const API_URL = "http://localhost:3000/productos"
+
+// let productosMaxi=[]
+
+// const getProducts = fetch(API_URL).
+//                     then(response => response.json())
+//                     .then(products=> {
+//                       console.log(products); 
+//                       productosMaxi=products
+//                       // console.log('prodMaxiPromesa',productosMaxi);
+//                     });
+
+// console.log('prodMaxi',productosMaxi);
+
+// console.log('productos', getProducts);
+
+
+
+
+
+
+
