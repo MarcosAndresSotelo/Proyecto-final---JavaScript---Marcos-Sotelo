@@ -18,8 +18,12 @@ function nuevoUsuario() {
   let nuevoEmail = document.getElementById('email').value
   let nuevaContrasena = document.getElementById('contrasena').value
 
+  console.log('xd', nuevoNombre)
+  console.log(nuevoEmail)
+  console.log(nuevaContrasena)
 
   if (nuevoEmail.match(emailRegex) && checklong(nuevoNombre) && checklong(nuevaContrasena)) {
+    console.log('email correcto')
     nombre = nombre.concat(nuevoNombre)
     email = email.concat(nuevoEmail)
     contrasena = contrasena.concat(nuevaContrasena)
@@ -32,18 +36,17 @@ function nuevoUsuario() {
 
   }
 
-nuevoUsuario()
+  nombre = nombre.concat(nuevoNombre)
+  email = email.concat(nuevoEmail)
+  contrasena = contrasena.concat(nuevaContrasena)
 
 
- nombre = nombre.concat(nuevoNombre)
- email = email.concat(nuevoEmail)
- contrasena = contrasena.concat(nuevaContrasena)
 
 
   // guardar registro en localStoreage
- localStorage.setItem('nombreUsuario', nombre)
- localStorage.setItem('emailUsuario', email)
- localStorage.setItem('contrasenaUsuario', contrasena)
+  localStorage.setItem('nombreUsuario', nombre)
+  localStorage.setItem('emailUsuario', email)
+  localStorage.setItem('contrasenaUsuario', contrasena)
 }
 
 
