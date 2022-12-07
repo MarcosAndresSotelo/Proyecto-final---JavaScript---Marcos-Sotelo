@@ -28,18 +28,22 @@ function nuevoUsuario() {
     localStorage.setItem('contrasenaUsuario', contrasena)
 
   } else {
-    // poner sweet alert
+    Swal.fire('Se registro correctamente')
 
   }
 
-  nombre = nombre.concat(nuevoNombre)
-  email = email.concat(nuevoEmail)
-  contrasena = contrasena.concat(nuevaContrasena)
+nuevoUsuario()
+
+
+ nombre = nombre.concat(nuevoNombre)
+ email = email.concat(nuevoEmail)
+ contrasena = contrasena.concat(nuevaContrasena)
 
 
   // guardar registro en localStoreage
-  localStorage.setItem('nombreUsuario', nombre)
-  localStorage.setItem('emailUsuario', email)
-  localStorage.setItem('contrasenaUsuario', contrasena)
+ localStorage.setItem('nombreUsuario', nombre)
+ localStorage.setItem('emailUsuario', email)
+ localStorage.setItem('contrasenaUsuario', contrasena)
 }
+
 
