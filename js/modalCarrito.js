@@ -1,13 +1,27 @@
 
 // Modal carrito
-
 document.addEventListener("DOMContentLoaded", () => {
-  carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito = JSON.parse(localStorage.getItem("guardarCarrito")) || [];
   modalCarrito();
 })
 
+
 const carritoContenedor = document.querySelector('#carritoContenedor')
 const precioTotal = document.querySelector("#precioTotal")
+const continuarCompra = document.querySelector("#continuarCompra")
+
+continuarCompra.addEventListener('click', () => {
+  if (carrito.length === 0) {
+    Swal.fire({
+      title: "¡Tu carrito está vacio!",
+      text: "Compra algo para continuar",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+    })
+  } else {
+    location.href = "../pages/carrito.html"
+  }
+})
 
 
 const modalCarrito = () => {
@@ -24,7 +38,7 @@ const modalCarrito = () => {
         <p>Producto: ${nombre}</p>
       <p>Precio: ${precio}</p>
       <p>Cantidad :${cantidad}</p>
-      <button class="btn btn-danger"  onclick="eliminarProducto(${id})">Eliminar producto</button>
+      <button class="btn btn-secondary"  onclick="eliminarProducto(${id})">Eliminar producto</button>
         </div>
       </div>
       `;
@@ -38,6 +52,7 @@ function eliminarProducto(id) {
   const idProd = id
   carrito = carrito.filter((prod) => prod.id !== idProd)
   modalCarrito()
+
 }
 
 function guardarModal() {

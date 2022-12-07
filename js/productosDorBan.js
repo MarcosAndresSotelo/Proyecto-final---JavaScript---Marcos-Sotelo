@@ -31,7 +31,7 @@ async function monstrarProductos() {
             <li class="list-group-item">$${producto.precio}</li>
             <li class="list-group-item">
               <label for="number" class="livCant">Cantidad:</label>
-              <input type="number" name="number" id="${producto.id}"/>
+              <input type="number" name="number" min="1" max="100" id="${producto.id}"/>
             </li>
             <li class="list-group-item">
               <label for="submit"></label>
@@ -39,8 +39,8 @@ async function monstrarProductos() {
             </li>
           </ul>
         </div>`
-    if (document.getElementById('sectionLiv')) {
-      document.getElementById('sectionLiv').innerHTML += artiulos
+    if (document.getElementById('sectionDor')) {
+      document.getElementById('sectionDor').innerHTML += artiulos
     }
   })
 }
@@ -48,14 +48,19 @@ async function monstrarProductos() {
 let carrito = []
 
 function agregarAlCarrito(id) {
+
   let producto = productosStore.find(producto => producto.id === id)
   let cantidadProductoSeleccionado = document.getElementById(producto.id).value
   producto.cantidad = cantidadProductoSeleccionado;
-
   carrito = [...carrito, producto]
+
+
+  modalCarrito()
+
   console.log(carrito)
 
-  localStorage.setItem('carrito', JSON.stringify(carrito))
+  // localStorage.setItem('carrito', JSON.stringify(carrito))
+
 }
 
 // Mostrar en HTML

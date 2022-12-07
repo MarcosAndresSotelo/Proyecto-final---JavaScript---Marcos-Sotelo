@@ -1,6 +1,5 @@
 // const localStorageCarrito = localStorage.getItem('carrito')
 // const carritoParseado = JSON.parse(localStorageCarrito);
-// const botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 
 // function mostrarCarrito(producto) {
 //   let contenedorCarrito = document.getElementById("contenedorCarrito")
@@ -31,46 +30,58 @@
 //   })
 // }
 
-// botonFinalizarCompra.addEventListener("click", () => {
-//   Swal.fire(
-//     'Gracias por su compra!',
-//     'Vuela pronto!',
-//     'success'
-//   )
-// })
 
 
 
 const localStorageCarrito = localStorage.getItem('guardarCarrito')
 const carritoParseado = JSON.parse(localStorageCarrito);
+const botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 
-const mostrarCarrito = () => {
+const mostrarCarrito = (producto) => {
   const carritoLista = document.querySelector('#carritoLista tbody')
-  carrito.forEach((producto) => {
-    const { id, nombre, precio, descripcion, cantidad, img } = producto
-    const row = document.createElement("row")
-    carritoLista.appendChild(row);
-    row.innerHTML += `
-    <div class="modal-contenedor">
-    <div>
-    <img class="img-fluid img-carrito" src="${img}"/>
-    </div>
-    <div>
-    <p>Producto: ${nombre}</p>
-    <p>Precio: ${precio}</p>
-    <p>Cantidad :${cantidad}</p>
-    <button class="btn btn-danger"  onclick="eliminarProducto(${id})">Eliminar producto</button>
-    </div>
-    </div>
+  console.log(carritoLista);
+  const { id, nombre, precio, descripcion, cantidad, img } = producto
+  const row = document.createElement("tr")
+  carritoLista.appendChild(row);
+  row.innerHTML += `
+    <td><img class="img-fluid imgCarrito" src="${img}" /></td>
+    <td>${nombre}</td>
+    <td>$${precio}</td>
+    <td>${cantidad}</td>
+    <td>$${cantidad * precio}</td>
     `;
-  })
-  
-  function mostrarProductosCarrito() {
-    carritoParseado.forEach(producto => {
-      mostrarCarrito(producto);
-    })
-  }
-  mostrarProductosCarrito()
-  
 }
+
+function mostrarProductosCarrito() {
+  carritoParseado.forEach(producto => {
+    mostrarCarrito(producto);
+  })
+}
+mostrarProductosCarrito()
+
+botonFinalizarCompra.addEventListener("click", () => {
+
+  const spinnerCarrito = document.querySelector("#spinner")
+  spinnerCarrito.classList.add("d-flex")
+  spinnerCarrito.classList.remove("d-none")
+
+  setTimeout(() => {
+    spinnerCarrito.classList.remove("d-flex")
+    spinnerCarrito.classList.add("d-none")
+  }, 1500)
+
+function sweetAlert(){
+  Swal.fire({
+    title: "¡Gracias por su compra!",
+    text: "Vuelva pronto",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  })
+}
+
+
+  setTimeout(sweetAlert, 1500)
+
+
+})
 

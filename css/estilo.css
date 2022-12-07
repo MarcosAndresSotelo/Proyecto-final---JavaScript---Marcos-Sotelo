@@ -125,14 +125,10 @@
 }
 
 /* carrito */
-.imgProd {
-  width: 50%;
-  height: 50%;
-}
-
-.carritoFlex {
-  display: flex;
-}
+.imgCarrito{
+  width:200px;
+  padding:20px;
+} 
 
 /* Modal Carrito */
 .modalContenedor {
