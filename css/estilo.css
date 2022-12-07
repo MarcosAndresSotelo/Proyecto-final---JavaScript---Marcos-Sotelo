@@ -130,6 +130,11 @@
   padding:20px;
 } 
 
+.spinnerCarrito{
+  display: flex;
+}
+
+
 /* Modal Carrito */
 .modalContenedor {
   display: flex;
@@ -142,7 +147,12 @@
 .imgCarrito{
   width:200px;
   padding:20px;
-} 
+}
+
+.iconCarrito{
+  display: flex;
+  width: 150px;
+}
 
 
 /*main index*/

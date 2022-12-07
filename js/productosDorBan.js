@@ -57,9 +57,6 @@ function agregarAlCarrito(id) {
 
   modalCarrito()
 
-  console.log(carrito)
-
-  // localStorage.setItem('carrito', JSON.stringify(carrito))
 
 }
 

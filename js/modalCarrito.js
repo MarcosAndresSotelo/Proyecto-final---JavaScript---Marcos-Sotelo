@@ -58,3 +58,5 @@ function eliminarProducto(id) {
 function guardarModal() {
   localStorage.setItem('guardarCarrito', JSON.stringify(carrito))
 }
+
+

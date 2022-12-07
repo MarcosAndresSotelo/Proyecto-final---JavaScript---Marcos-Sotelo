@@ -12,6 +12,10 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
     <title>Maria: Decora tu hogar</title>
     <link
       rel="icon"
@@ -68,13 +72,14 @@
           <!-- Icono carrito -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <i class="bi bi-cart"></i>
               <a
-                class="nav-link text-white bi bi-cart"
+                class="nav-link text-white"
                 data-bs-toggle="modal"
                 data-bs-target="#modal"
               >
-                <i class="bi bi-cart mx-5" id="carritoContenedor">0</i>
+                <i class="bi bi-cart mx-5 iconCarrito" id="carritoContenedor"
+                  >0</i
+                >
               </a>
             </li>
           </ul>
@@ -156,16 +161,16 @@
 
                   <tr>
                     <th colspan="4" scope="col" class="text-right">
-                      Precio final
-                      <p id="totalProceso"></p>
+                      Precio final:
+                      <p id="precioFinal"></p>
                     </th>
                   </tr>
                 </table>
               </div>
 
               <!-- spinner de carga -->
-              <div class="d-none" id="spinner">
-                <div class="spinner-border" role="status">
+              <div class="d-none d-flex justify-content-center" id="spinner">
+                <div class="spinner-border  spinnerCarrito" role="status">
                   <span class="sr-only"></span>
                 </div>
               </div>

@@ -54,12 +54,7 @@ function agregarAlCarrito(id) {
     producto.cantidad = cantidadProductoSeleccionado;
     carrito = [...carrito, producto]
 
-
     modalCarrito()
-
-    console.log(carrito)
-
-    // localStorage.setItem('carrito', JSON.stringify(carrito))
 
 }
 
