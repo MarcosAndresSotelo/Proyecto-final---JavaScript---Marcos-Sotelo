@@ -5,4 +5,3 @@ Entrega del proyecto final del curso de JavaScript
 - En este trabajo se aplicó html, bosststrap, css, sass para organizar el css y javascript para la funcionalidad
 - Se agregaron animaciones de la librería AOS
 - Todo el sitio es responsive y no existe overflow en el eje x
-- Para poder visualizar los productos es necesario ejecutar en la terminal los comandos npm install -g json-server y json-server --watch db.json
