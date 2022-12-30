@@ -1,16 +1,11 @@
 
-// Traer los productos
-function getProductos() {
-  const API_URL = "http://localhost:3000/productosDormitorioyBano"
-  return fetch(API_URL).then(response => response.json())
-}
+let productosStore = []
+
 
 // HTML
-let productosStore = []
-async function monstrarProductos() {
-  await getProductos().then(productos => { productosStore = productos });
+function monstrarProductos() {
   productosStore.forEach(producto => {
-    const artiulos = `<div
+    const artiulos =`<div
           class="card col-6 col-lg-12 rounded-start"
           style="width: 30rem"
           data-aos="fade-up"
@@ -60,5 +55,11 @@ function agregarAlCarrito(id) {
 
 }
 
-// Mostrar en HTML
-monstrarProductos();
+ // Traer los productos
+ fetch("../prodDorBanio.json")
+ .then(response => response.json())
+ .then(data => {
+   productosStore=data
+   // Mostrar en HTML
+   monstrarProductos();
+ });

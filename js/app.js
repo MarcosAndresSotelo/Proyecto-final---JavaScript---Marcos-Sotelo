@@ -7,6 +7,7 @@ let botonEnviar = document.getElementById('botonEnviar')
 let nombre = []
 let email = []
 let contrasena = []
+const usuarioContenedor=document.querySelector("#usuarioConenedor")
 
 function checklong(texto) {
   return texto.length > 3 && texto.length < 15
@@ -18,12 +19,10 @@ function nuevoUsuario() {
   let nuevoEmail = document.getElementById('email').value
   let nuevaContrasena = document.getElementById('contrasena').value
 
-  console.log('xd', nuevoNombre)
-  console.log(nuevoEmail)
-  console.log(nuevaContrasena)
+  
 
   if (nuevoEmail.match(emailRegex) && checklong(nuevoNombre) && checklong(nuevaContrasena)) {
-    console.log('email correcto')
+    
     nombre = nombre.concat(nuevoNombre)
     email = email.concat(nuevoEmail)
     contrasena = contrasena.concat(nuevaContrasena)
@@ -39,7 +38,6 @@ function nuevoUsuario() {
   nombre = nombre.concat(nuevoNombre)
   email = email.concat(nuevoEmail)
   contrasena = contrasena.concat(nuevaContrasena)
-
 
 
 
